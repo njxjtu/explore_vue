@@ -72,6 +72,8 @@ console.log("Starting async function...");
 handleDataFetch(); // Call the async function
 console.log("Async function has been called and is running in the background.");
 
+const pElementRef = ref(null)
+
 </script>
 
 <template>
@@ -86,6 +88,16 @@ console.log("Async function has been called and is running in the background.");
         <strong>{{ post.title }}</strong>
       </li>
     </ul>
+  </div>
+  <div>
+    <h2>Async/Await Example</h2>
+    <p>Check the console for async/await function output.</p>
+  </div>
+  <div>
+    <p ref="pElementRef"></p>
+    <button @click="pElementRef.textContent = 'This text was added using a template ref!'">
+      Update Text via Ref
+    </button> 
   </div>
 </template>
 
