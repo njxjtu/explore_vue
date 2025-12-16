@@ -36,6 +36,42 @@ const fetchPosts = async () => {
 
 // Call the function when the component is mounted to the DOM
 onMounted(fetchPosts);
+
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const success = true; // Still simulates success/failure
+      if (success) {
+        resolve("Data fetched successfully!");
+      } else {
+        reject("Error: Network connection lost.");
+      }
+    }, 1000);
+  });
+}
+
+
+async function handleDataFetch() {
+  try {
+    // 1. Execution pauses here until the fetchData Promise resolves.
+    const result = await fetchData();
+    
+    // 2. If the Promise resolves, the value is stored in 'result'.
+    console.log("Success:", result); 
+
+  } catch (error) {
+    // 3. If the Promise rejects, the execution jumps to the catch block.
+    console.error("Failure:", error);
+  } finally {
+    // 4. Always runs after try or catch completes.
+    console.log("Process complete.");
+  }
+}
+
+console.log("Starting async function...");
+handleDataFetch(); // Call the async function
+console.log("Async function has been called and is running in the background.");
+
 </script>
 
 <template>
